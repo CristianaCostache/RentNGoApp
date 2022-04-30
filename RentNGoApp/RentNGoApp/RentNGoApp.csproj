@@ -6,4 +6,20 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RentNGoApp.Abstractions\RentNGoApp.Abstractions.csproj" />
+    <ProjectReference Include="..\RentNGoApp.AppLogic\RentNGoApp.AppLogic.csproj" />
+    <ProjectReference Include="..\RentNGoApp.DataAccess\RentNGoApp.DataAccess.csproj" />
+    <ProjectReference Include="..\RentNGoApp.DataModels\RentNGoApp.DataModels.csproj" />
+  </ItemGroup>
+
 </Project>

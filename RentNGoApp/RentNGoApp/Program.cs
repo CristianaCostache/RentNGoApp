@@ -1,7 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using RentNGoApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<RentNGoAppContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RentNGoDb")));
 
 var app = builder.Build();
 
