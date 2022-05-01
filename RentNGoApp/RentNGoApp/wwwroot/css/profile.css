@@ -1,0 +1,12 @@
+﻿table {
+    width: 100%;
+    line-height: 20px;
+}
+
+.end-10 {
+    right: 10px;
+}
+
+.bottom-10 {
+    bottom: 10px;
+}
