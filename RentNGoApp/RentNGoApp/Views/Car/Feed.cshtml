@@ -1,0 +1,65 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+
+<head>
+	<link rel="stylesheet" href="~/css/filter.css" asp-append-version="true" />
+</head>
+
+<div class="d-flex justify-content-center center-div flex-wrap border-0 p-0">
+	<form class="col-md-4 filter-div bg-light">
+		<h4>Sort by</h4>
+		<div class="form-group">
+			<select name="sort" asp-items="Html.GetEnumSelectList<RentNGoApp.DataModels.Sort>()" class="form-select">
+			</select>
+		</div>
+		<h4>Filter by</h4>
+		<h6>Price range</h6>
+		<div class="d-flex inline-block">
+			<div class="form-group w-100">
+				<input type="number" name="minprice" class="form-control" id="minprice" placeholder="Minimum price">
+			</div>
+			<div class="form-group w-100">
+				<input type="number" name="maxprice" class="form-control" id="maxprice" placeholder="Maximum price">
+			</div>
+		</div>
+		<h6>Brand</h6>
+		<div class="form-group">
+			<select name="brand" asp-items="Html.GetEnumSelectList<RentNGoApp.DataModels.Brand>()" class="form-select">
+			</select>
+		</div>
+		<h6>Color</h6>
+		<div class="form-group">
+			<select name="color" asp-items="Html.GetEnumSelectList<RentNGoApp.DataModels.Color>()" class="form-select">
+			</select>
+		</div>
+		<div class="form-group">
+		</div>
+		<div class="btn-group col-12 mt-4">
+			<button type="submit" value="submit" name="submit" formmethod="post" class="btn btn-outline-primary">
+				<i class="bi bi-funnel"></i>
+				Apply filters
+			</button>
+			<button type="submit" id="flightReset" class="btn btn-outline-danger">
+				<i class="bi bi-x"></i> Reset
+				filters
+			</button>
+		</div>
+	</form>
+	<div class="col-md-8 result-div">
+		<div class="infocard">
+			<div class="infocard-container col-md-4">
+				<img src="img/hotel/hotel1.jpg" class="infocard-img" alt="">
+			</div>
+			<div class="infocard-body col-md">
+				<h4>Car name</h4>
+				<p class="nonaccent">Car brand</p>
+				<p class="nonaccent">Car color</p>
+				<div class="position-absolute bottom-10 end-10">
+					<div class="price price">$156</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
