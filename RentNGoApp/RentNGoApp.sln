@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentNGoApp", "RentNGoApp\RentNGoApp.csproj", "{773B1086-E122-4872-9F35-DBD2E3E30401}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentNGoApp", "RentNGoApp\RentNGoApp.csproj", "{773B1086-E122-4872-9F35-DBD2E3E30401}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentNGoApp.Abstractions", "RentNGoApp.Abstractions\RentNGoApp.Abstractions.csproj", "{1F429BC0-7F8E-4013-94A8-512DF9B96CF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentNGoApp.Abstractions", "RentNGoApp.Abstractions\RentNGoApp.Abstractions.csproj", "{1F429BC0-7F8E-4013-94A8-512DF9B96CF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentNGoApp.AppLogic", "RentNGoApp.AppLogic\RentNGoApp.AppLogic.csproj", "{48115151-25D6-431E-85F7-ADBE322C3938}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentNGoApp.AppLogic", "RentNGoApp.AppLogic\RentNGoApp.AppLogic.csproj", "{48115151-25D6-431E-85F7-ADBE322C3938}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentNGoApp.DataAccess", "RentNGoApp.DataAccess\RentNGoApp.DataAccess.csproj", "{1BA1BAE1-780E-4096-A20A-B00589513772}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentNGoApp.DataAccess", "RentNGoApp.DataAccess\RentNGoApp.DataAccess.csproj", "{1BA1BAE1-780E-4096-A20A-B00589513772}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentNGoApp.DataModels", "RentNGoApp.DataModels\RentNGoApp.DataModels.csproj", "{31E33295-A793-4904-9543-B84093B6D4E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentNGoApp.DataModels", "RentNGoApp.DataModels\RentNGoApp.DataModels.csproj", "{31E33295-A793-4904-9543-B84093B6D4E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
