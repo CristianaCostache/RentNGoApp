@@ -10,6 +10,6 @@ namespace RentNGoApp.Data
         public DbSet<Car>? cars { get; set; }
         public DbSet<Image>? images { get; set; }
         public DbSet<RentingInfo>? rentingInfos { get; set; }
-
+        public DbSet<User>? users { get; set; }
     }
 }

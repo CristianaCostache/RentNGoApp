@@ -1,0 +1,75 @@
+﻿@{
+	ViewData["Title"] = "Profile";
+}
+<head>
+	<link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+</head>
+
+<div class="center-div">
+	<div class="infocard">
+		<div class="infocard-container col-md">
+			<img src="" class="infocard-img" id="profilePicture">
+		</div>
+		<div class="infocard-body col-md-8">
+			<h4>Full name</h4>
+			<p>Email: example@example.com</p>
+		</div>
+		<button type="button" class="btn btn-primary btn-lg position-absolute bottom-10 end-10">Generate statistics</button>
+	</div>
+	<h4>Posted cars</h4>
+	<table class="table table-hover table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">Brand</th>
+				<th scope="col">Color</th>
+				<th scope="col">Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td scope="row">name</td>
+				<td>brand</td>
+				<td>color</td>
+				<td>price</td>
+			</tr>
+			<tr>
+				<td scope="row">name</td>
+				<td>brand</td>
+				<td>color</td>
+				<td>price</td>
+			</tr>
+
+		</tbody>
+	</table>
+	<hr>
+	<h4>Rented cars</h4>
+	<table class="table table-hover table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">Brand</th>
+				<th scope="col">Color</th>
+				<th scope="col">Price</th>
+				<th scope="col">Owner</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td scope="row">name</td>
+				<td>brand</td>
+				<td>color</td>
+				<td>price</td>
+				<td>owner</td>
+			</tr>
+			<tr>
+				<td scope="row">name</td>
+				<td>brand</td>
+				<td>color</td>
+				<td>price</td>
+				<td>owner</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

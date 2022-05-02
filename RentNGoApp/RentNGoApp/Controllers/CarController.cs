@@ -1,24 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RentNGoApp.DataModels;
 using RentNGoApp.Models;
 using System.Diagnostics;
 
 namespace RentNGoApp.Controllers
 {
-    public class HomeController : Controller
+    public class CarController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<CarController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public CarController(ILogger<CarController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Feed()
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Feed([FromForm] Filter filter)
+        {
+            var x = filter;
+            return View(filter);
+        }
 
-        public IActionResult Privacy()
+        public IActionResult Post()
         {
             return View();
         }
