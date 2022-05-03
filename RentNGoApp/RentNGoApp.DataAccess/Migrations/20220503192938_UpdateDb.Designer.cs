@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentNGoApp.DataAccess;
 
 #nullable disable
 
-namespace RentNGoApp.Migrations
+namespace RentNGoApp.DataAccess.Migrations
 {
     [DbContext(typeof(RentNGoAppContext))]
-    partial class RentNGoAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220503192938_UpdateDb")]
+    partial class UpdateDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

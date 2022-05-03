@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RentNGoApp.Abstractions.Repositories;
+using RentNGoApp.Abstractions.Services;
+using RentNGoApp.AppLogic;
 using RentNGoApp.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
-
+builder.Services.AddScoped<ICarService, CarService>();
+builder.Services.AddScoped<ICarRepository, CarRepository>();
 builder.Services.AddDbContext<RentNGoAppContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RentNGoDb")));
 
 var app = builder.Build();

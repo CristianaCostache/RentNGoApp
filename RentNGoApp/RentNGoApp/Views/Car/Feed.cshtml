@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<RentNGoApp.DataModels.Car>
+
+@{
 	ViewData["Title"] = "Home Page";
 }
 
@@ -47,19 +49,24 @@
 			</button>
 		</div>
 	</form>
+
 	<div class="col-md-8 result-div">
-		<div class="infocard">
-			<div class="infocard-container col-md-4">
-				<img src="~/img/img.png" class="infocard-img" alt="">
-			</div>
-			<div class="infocard-body col-md">
-				<h4><a asp-controller="Car" asp-action="Details">Car name</a></h4>
-				<p class="nonaccent">Car brand</p>
-				<p class="nonaccent">Car color</p>
-				<div class="position-absolute bottom-10 end-10">
-					<div class="price price">$156</div>
+		@foreach (var car in Model)
+		{
+			<div class="infocard">
+				<div class="infocard-container col-md-4">
+					<img src="~/img/img.png" class="infocard-img" alt="">
+				</div>
+				<div class="infocard-body col-md">
+					<h4><a asp-controller="Car" asp-action="Details">@Html.DisplayFor(carItem => car.name)</a></h4>
+					<p class="nonaccent">@Html.DisplayFor(carItem => car.brand)</p>
+					<p class="nonaccent">@Html.DisplayFor(carItem => car.color)</p>
+					<div class="position-absolute bottom-10 end-10">
+						<div class="price price">$@Html.DisplayFor(carItem => car.price)</div>
+					</div>
 				</div>
 			</div>
-		</div>
+		}
 	</div>
+
 </div>
