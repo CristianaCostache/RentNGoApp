@@ -90,9 +90,13 @@ input::-webkit-inner-spin-button {
     padding: 10px;
 }
 
-    .option-link > a:link {
-        text-decoration: none;
-    }
+.option-link > a:link {
+    text-decoration: none;
+}
+
+textarea {
+    resize: none;
+}
 
 @media only screen and (max-width: 767px) {
     .infocard-container {
