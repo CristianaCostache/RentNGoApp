@@ -1,9 +1,10 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
+
 
 #nullable disable
 
-namespace RentNGoApp.Migrations
+namespace RentNGoApp.DataAccess.Migrations
 {
     public partial class CreateDb : Migration
     {
