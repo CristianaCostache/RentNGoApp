@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RentNGoApp.DataModels;
 
-namespace RentNGoApp.Data
+namespace RentNGoApp.DataAccess
 {
     public class RentNGoAppContext : DbContext
     {

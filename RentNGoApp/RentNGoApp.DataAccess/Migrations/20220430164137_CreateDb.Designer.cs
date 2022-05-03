@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RentNGoApp.Data;
+using RentNGoApp.DataAccess;
 
 #nullable disable
 
-namespace RentNGoApp.Migrations
+namespace RentNGoApp.DataAccess.Migrations
 {
     [DbContext(typeof(RentNGoAppContext))]
     [Migration("20220430164137_CreateDb")]
