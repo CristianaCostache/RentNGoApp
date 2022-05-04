@@ -44,5 +44,14 @@ namespace RentNGoApp.AppLogic
             _repositoryWrapper.carRepository.Create(car);
             _repositoryWrapper.Save();
         }
+
+        public List<Car> GetCarsByFilter(Filter filter)
+        {
+            List<Car> cars = _repositoryWrapper.carRepository.GetByFilter(filter);
+
+
+
+            return cars;
+        }
     }
 }

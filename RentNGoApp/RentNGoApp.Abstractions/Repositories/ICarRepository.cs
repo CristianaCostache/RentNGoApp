@@ -9,6 +9,6 @@ namespace RentNGoApp.Abstractions.Repositories
 {
     public interface ICarRepository : IRepositoryBase<Car>
     {
-
+        List<Car> GetByFilter(Filter filter);
     }
 }

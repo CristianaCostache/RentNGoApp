@@ -25,8 +25,8 @@ namespace RentNGoApp.Controllers
         [HttpPost]
         public IActionResult Feed([FromForm] Filter filter)
         {
-            var x = filter;
-            return View(filter);
+            var cars = _carService.GetCarsByFilter(filter);
+            return View(cars);
         }
 
         public IActionResult Post()
