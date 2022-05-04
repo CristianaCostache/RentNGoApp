@@ -1,50 +1,52 @@
-﻿@{
+﻿@model RentNGoApp.DataModels.Car
+
+@{
     ViewData["Title"] = "Post an Announcement";
 }
 
 <div class="center-div">
     <h1 class="text-primary">Post an Announcement!</h1>
-    <form>
+    <form method="post">
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group row my-2">
-                    <label class="col-sm-2 col-form-label">Name</label>
+                    <label asp-for="name" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Name">
+                        <input asp-for="name" type="text" id="name" name="name" class="form-control" placeholder="Name">
                     </div>
                 </div>
                 <div class="form-group row my-2">
-                    <label class="col-sm-2 col-form-label">Brand</label>
+                    <label asp-for="brand" class="col-sm-2 col-form-label">Brand</label>
                     <div class="col-sm-10">
-                        <select name="brand" asp-items="Html.GetEnumSelectList<RentNGoApp.DataModels.Brand>()" class="form-select">
+                        <select name="brand" asp-for="brand" asp-items="Html.GetEnumSelectList<RentNGoApp.DataModels.Brand>()" class="form-select">
                         </select>
                     </div>
                 </div>
                 <div class="form-group row my-2">
-                    <label class="col-sm-2 col-form-label">Color</label>
+                    <label asp-for="color" class="col-sm-2 col-form-label">Color</label>
                     <div class="col-sm-10">
-                        <select name="color" asp-items="Html.GetEnumSelectList<RentNGoApp.DataModels.Color>()" class="form-select">
+                        <select asp-for="color" name="color" asp-items="Html.GetEnumSelectList<RentNGoApp.DataModels.Color>()" class="form-select">
                         </select>
                     </div>
                 </div>
                 <div class="form-group row my-2">
-                    <label class="col-sm-2 col-form-label">Price</label>
+                    <label asp-for="price" class="col-sm-2 col-form-label">Price</label>
                     <div class="col-sm-10">
-                        <input type="number" id="price" name="price" class="form-control" placeholder="Price">
+                        <input asp-for="price" type="number" id="price" name="price" class="form-control" placeholder="Price">
                     </div>
                 </div>
 
                 <div class="form-group row my-2">
-                    <label class="col-sm-2 col-form-label">Images</label>
+                    <label asp-for="images" class="col-sm-2 col-form-label">Images</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="file" id="imgs" name="imgs" multiple>
+                        <input asp-for="images" class="form-control" type="file" id="imgs" name="imgs" multiple>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group row my-2">
                     <div class="col-sm-12">
-                        <textarea type="text" id="description" name="description" class="form-control" placeholder="Description" rows="9"  ></textarea>
+                        <textarea type="text" asp-for="description" id="description" name="description" class="form-control" placeholder="Description" rows="9"  ></textarea>
                     </div>
                 </div>
             </div>

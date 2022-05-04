@@ -5,11 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentNGoApp.Abstractions.Services
+namespace RentNGoApp.Abstractions.Repositories
 {
-    public interface ICarService
+    public interface IUserRepository : IRepositoryBase<User>
     {
-        List<Car> GetAllCars();
-        void AddCar(Car car);
     }
 }

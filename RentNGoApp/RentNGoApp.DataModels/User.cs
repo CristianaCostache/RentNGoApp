@@ -13,5 +13,6 @@ namespace RentNGoApp.DataModels
         public string lastname { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public ICollection<Car>? cars { get; set; }
     }
 }
