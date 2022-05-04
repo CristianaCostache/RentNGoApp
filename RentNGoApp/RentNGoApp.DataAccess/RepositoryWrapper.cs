@@ -10,8 +10,20 @@ namespace RentNGoApp.DataAccess
     public class RepositoryWrapper : IRepositoryWrapper
     {
         private RentNGoAppContext _rentNGoAppContext;
-        //repositories
-      
+        private ICarRepository? _carRepository;
+
+        public ICarRepository carRepository
+        {
+            get
+            {
+                if (_carRepository == null)
+                {
+                    _carRepository = new CarRepository(_rentNGoAppContext);
+                }
+
+                return _carRepository;
+            }
+        }
 
         public RepositoryWrapper(RentNGoAppContext rentNGoAppContext)
         {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RentNGoApp.Abstractions.Services;
 using RentNGoApp.DataModels;
 using RentNGoApp.Models;
 using System.Diagnostics;
@@ -8,15 +9,18 @@ namespace RentNGoApp.Controllers
     public class CarController : Controller
     {
         private readonly ILogger<CarController> _logger;
+        private readonly ICarService _carService;
 
-        public CarController(ILogger<CarController> logger)
+        public CarController(ILogger<CarController> logger, ICarService carService)
         {
             _logger = logger;
+            _carService = carService;
         }
 
         public IActionResult Feed()
         {
-            return View();
+            var cars = _carService.GetAllCars();
+            return View(cars);
         }
         [HttpPost]
         public IActionResult Feed([FromForm] Filter filter)
