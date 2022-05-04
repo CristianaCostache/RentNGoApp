@@ -1,4 +1,6 @@
-﻿@{
+﻿@model RentNGoApp.DataModels.Car
+
+@{
 	ViewData["Title"] = "Details";
 }
 
@@ -7,7 +9,7 @@
 </head>
 
 <div class="center-div">
-	<h4>Car name</h4>
+	<h4>@Html.DisplayFor(carItem => Model.name)</h4>
 	<div class="infocard d-flex justify-content-around">
 		<div class="infocard-container col-md-4">
 			<img src="~/img/img.png" class="infocard-img" alt="">
@@ -26,15 +28,15 @@
 		</div>
 	</div>
 	<div class="d-flex justify-content-between align-items-center">
-		<h4>Car Brand</h4>
-		<h4>Car Color</h4>
+		<h4>@Html.DisplayFor(carItem => Model.brand)</h4>
+		<h4>@Html.DisplayFor(carItem => Model.color)</h4>
 		<h4>Car Owner</h4>
-		<h4 class="price">Car Price</h4>
+		<h4 class="price">@Html.DisplayFor(carItem => Model.price)</h4>
 	</div>
 	<h4>Car description</h4>
-	<p class="border p-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+	<p class="border p-3">@Html.DisplayFor(carItem => Model.description)</p>
 	<div class="d-flex justify-content-around mt-3">
-		<button type="button" class="btn btn-primary col-md-2">Rent Now</button>
-		<button type="button" class="btn btn-danger col-md-2">Delete</button>
+		<a asp-controller="Car" asp-action="Rent" asp-route-id=@Model.carId class="btn btn-primary col-md-2">Rent Now</a>
+		<a asp-controller="Car" asp-action="Delete" asp-route-id=@Model.carId class="btn btn-danger col-md-2">Delete</a>
 	</div>
 </div>

@@ -17,6 +17,9 @@ builder.Services.AddScoped<ICarRepository, CarRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+builder.Services.AddScoped<IRentingInfoService, RentingInfoService>();
+builder.Services.AddScoped<IRentingInfoRepository, RentingInfoRepository>();
+
 builder.Services.AddDbContext<RentNGoAppContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RentNGoDb")));
 
 var app = builder.Build();

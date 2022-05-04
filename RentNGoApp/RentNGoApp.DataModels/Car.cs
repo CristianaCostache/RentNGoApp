@@ -17,6 +17,8 @@ namespace RentNGoApp.DataModels
     }
     public class Car
     {
+        public const string STATUS_AVAILABLE = "available";
+        public const string STATUS_UNAVAILABLE = "unavailable";
         public int carId { get; set; }
         public string name { get; set; }
         public Brand brand { get; set; }
@@ -24,7 +26,7 @@ namespace RentNGoApp.DataModels
         public double price { get; set; }
         public string description { get; set; }
         public ICollection<Image> images { get; set; }
-        public string status { get; set; } = "available";
+        public string status { get; set; } = STATUS_AVAILABLE;
         public DateTime createdAt { get; set; } = DateTime.Now;
         public DateTime updatedAt { get; set; } = DateTime.Now;
     }

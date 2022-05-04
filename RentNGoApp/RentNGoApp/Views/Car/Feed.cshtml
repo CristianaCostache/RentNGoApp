@@ -58,7 +58,7 @@
 					<img src="~/img/img.png" class="infocard-img" alt="">
 				</div>
 				<div class="infocard-body col-md">
-					<h4><a asp-controller="Car" asp-action="Details">@Html.DisplayFor(carItem => car.name)</a></h4>
+					<h4><a asp-controller="Car" asp-action="Details" asp-route-id=@car.carId>@Html.DisplayFor(carItem => car.name)</a></h4>
 					<p class="nonaccent">@Html.DisplayFor(carItem => car.brand)</p>
 					<p class="nonaccent">@Html.DisplayFor(carItem => car.color)</p>
 					<div class="position-absolute bottom-10 end-10">

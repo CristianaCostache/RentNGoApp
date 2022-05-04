@@ -44,5 +44,18 @@ namespace RentNGoApp.AppLogic
             _repositoryWrapper.carRepository.Create(car);
             _repositoryWrapper.Save();
         }
+
+        public Car GetCarById(int id)
+        {
+            Car car = _repositoryWrapper.carRepository.FindByCondition(item => item.carId == id).FirstOrDefault();
+            return car;
+        }
+
+        public void Delete(int id)
+        {
+            Car car = GetCarById(id);
+            _repositoryWrapper.carRepository.Delete(car);
+            _repositoryWrapper.Save();
+        }
     }
 }
