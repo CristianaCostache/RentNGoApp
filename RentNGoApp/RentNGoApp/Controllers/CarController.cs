@@ -34,6 +34,13 @@ namespace RentNGoApp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Post([FromForm] Car car)
+        {
+            _carService.AddCar(car);
+            return View();
+        }
+
         public IActionResult Details()
         {
             return View();

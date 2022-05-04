@@ -24,8 +24,8 @@ namespace RentNGoApp.DataModels
         public double price { get; set; }
         public string description { get; set; }
         public ICollection<Image> images { get; set; }
-        public string status { get; set; }
-        public DateTime createdAt { get; set; }
-        public DateTime updatedAt { get; set; }
+        public string status { get; set; } = "available";
+        public DateTime createdAt { get; set; } = DateTime.Now;
+        public DateTime updatedAt { get; set; } = DateTime.Now;
     }
 }

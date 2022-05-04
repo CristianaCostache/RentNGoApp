@@ -9,6 +9,7 @@ namespace RentNGoApp.Abstractions.Repositories
     public interface IRepositoryWrapper
     {
         ICarRepository carRepository { get; }
+        IUserRepository userRepository { get; }
         void Save();
     }
 }

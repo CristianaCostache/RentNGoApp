@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace RentNGoApp.Abstractions.Services
 {
-    public interface ICarService
+    public interface IUserService
     {
-        List<Car> GetAllCars();
-        void AddCar(Car car);
+        void AddUser(User user);
     }
 }
