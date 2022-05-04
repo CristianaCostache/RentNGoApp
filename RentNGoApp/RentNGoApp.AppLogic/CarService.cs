@@ -45,6 +45,15 @@ namespace RentNGoApp.AppLogic
             _repositoryWrapper.Save();
         }
 
+        public List<Car> GetCarsByFilter(Filter filter)
+        {
+            List<Car> cars = _repositoryWrapper.carRepository.GetByFilter(filter);
+
+
+
+            return cars;
+        }
+
         public Car GetCarById(int id)
         {
             Car car = _repositoryWrapper.carRepository.FindByCondition(item => item.carId == id).FirstOrDefault();
