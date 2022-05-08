@@ -11,6 +11,7 @@ namespace RentNGoApp.Abstractions.Repositories
         ICarRepository carRepository { get; }
         IUserRepository userRepository { get; }
         IRentingInfoRepository rentingInfoRepository { get; }
+        IImageRepository imageRepository { get; }
         void Save();
     }
 }

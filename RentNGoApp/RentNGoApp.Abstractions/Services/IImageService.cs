@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace RentNGoApp.Abstractions.Services
 {
-    public interface ICarService
+    public interface IImageService
     {
-        List<Car> GetAllCars();
-        void AddCar(Car car, ICollection<IFormFile> imageFiles);
-        List<Car> GetCarsByFilter(Filter filter);
-        Car GetCarById(int id);
-        void Delete(int id);
+        ICollection<Image> AddImage(ICollection<IFormFile> imageFiles);
+        ICollection<Image> GetAllImages();
+        List<Image> GetImagesByCarId(int carId);
     }
 }

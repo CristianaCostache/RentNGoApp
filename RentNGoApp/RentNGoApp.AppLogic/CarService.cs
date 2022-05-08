@@ -1,4 +1,5 @@
-﻿using RentNGoApp.Abstractions.Repositories;
+﻿using Microsoft.AspNetCore.Http;
+using RentNGoApp.Abstractions.Repositories;
 using RentNGoApp.Abstractions.Services;
 using RentNGoApp.DataModels;
 using System;
@@ -12,10 +13,12 @@ namespace RentNGoApp.AppLogic
     public class CarService : ICarService
     {
         private IRepositoryWrapper _repositoryWrapper;
+        private IImageService _imageService;
 
-        public CarService(IRepositoryWrapper repositoryWrapper)
+        public CarService(IRepositoryWrapper repositoryWrapper, IImageService imageService)
         {
             _repositoryWrapper = repositoryWrapper;
+            _imageService = imageService;
         }
 
         public List<Car> GetAllCars()
@@ -23,11 +26,16 @@ namespace RentNGoApp.AppLogic
             var cars = new List<Car>();
 
             cars = _repositoryWrapper.carRepository.FindAll().ToList();
+            foreach (Car car in cars)
+            {
+                List<Image> images = _imageService.GetImagesByCarId(car.carId);
+                car.images = images;
+            }
 
             return cars;
         }
 
-        public void AddCar(Car car)
+        public void AddCar(Car car, ICollection<IFormFile> imageFiles)
         {
             //User user = new User();
             //user.firstname = "John";
@@ -42,6 +50,8 @@ namespace RentNGoApp.AppLogic
 
             //_repositoryWrapper.carRepository.Create(car);
 
+            ICollection<Image> images = _imageService.AddImage(imageFiles);
+            car.images = images;
             User user = _repositoryWrapper.userRepository.FindByCondition(item => item.userId == 2).FirstOrDefault();
             user.cars = new List<Car>();
             user.cars.Add(car);
@@ -53,8 +63,11 @@ namespace RentNGoApp.AppLogic
         public List<Car> GetCarsByFilter(Filter filter)
         {
             List<Car> cars = _repositoryWrapper.carRepository.GetByFilter(filter);
-
-
+            foreach (Car car in cars)
+            {
+                List<Image> images = _imageService.GetImagesByCarId(car.carId);
+                car.images = images;
+            }
 
             return cars;
         }
@@ -62,6 +75,8 @@ namespace RentNGoApp.AppLogic
         public Car GetCarById(int id)
         {
             Car car = _repositoryWrapper.carRepository.FindByCondition(item => item.carId == id).FirstOrDefault();
+            List<Image> images = _imageService.GetImagesByCarId(car.carId);
+            car.images = images;
             return car;
         }
 

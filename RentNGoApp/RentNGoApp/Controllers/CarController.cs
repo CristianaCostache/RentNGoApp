@@ -10,12 +10,14 @@ namespace RentNGoApp.Controllers
     {
         private readonly ILogger<CarController> _logger;
         private readonly ICarService _carService;
+        private readonly IImageService _imageService;
         private readonly IRentingInfoService _rentingInfoService;
 
-        public CarController(ILogger<CarController> logger, ICarService carService, IRentingInfoService rentingInfoService)
+        public CarController(ILogger<CarController> logger, ICarService carService, IImageService imageService, IRentingInfoService rentingInfoService)
         {
             _logger = logger;
             _carService = carService;
+            _imageService = imageService;
             _rentingInfoService = rentingInfoService;
         }
 
@@ -37,9 +39,9 @@ namespace RentNGoApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromForm] Car car)
+        public IActionResult Post([FromForm] Car car, ICollection<IFormFile> imageFiles)
         {
-            _carService.AddCar(car);
+            _carService.AddCar(car, imageFiles);
             return RedirectToAction("Feed");
         }
 
