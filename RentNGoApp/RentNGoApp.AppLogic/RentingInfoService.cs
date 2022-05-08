@@ -23,13 +23,14 @@ namespace RentNGoApp.AppLogic
         public void Rent(int id)
         {
             Car car = _carService.GetCarById(id);
-            //User user = _repositoryWrapper.userRepository.FindByCondition(item => item.userId == 1).FirstOrDefault(); // todo
+            User user = _repositoryWrapper.userRepository.FindByCondition(item => item.userId == 2).FirstOrDefault(); // todo
             RentingInfo rentingInfo = new RentingInfo();
             rentingInfo.car = car;
-            rentingInfo.user = _repositoryWrapper.userRepository.FindByCondition(item => item.userId == 1).FirstOrDefault();
+            rentingInfo.user = user;
 
             car.status = Car.STATUS_UNAVAILABLE;
 
+            _repositoryWrapper.userRepository.Update(user);
             _repositoryWrapper.carRepository.Update(car);
             _repositoryWrapper.rentingInfoRepository.Create(rentingInfo);
             
