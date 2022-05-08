@@ -12,7 +12,7 @@ namespace RentNGoApp.DataAccess
         private RentNGoAppContext _rentNGoAppContext;
         private ICarRepository? _carRepository;
         private IUserRepository? _userRepository;
-
+        private IRentingInfoRepository? _rentingInfoRepository;
 
         public ICarRepository carRepository
         {
@@ -37,6 +37,19 @@ namespace RentNGoApp.DataAccess
                 }
 
                 return _userRepository;
+            }
+        }
+
+        public IRentingInfoRepository rentingInfoRepository
+        {
+            get
+            {
+                if (_rentingInfoRepository == null)
+                {
+                    _rentingInfoRepository = new RentingInfoRepository(_rentNGoAppContext);
+                }
+
+                return _rentingInfoRepository;
             }
         }
 

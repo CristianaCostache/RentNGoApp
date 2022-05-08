@@ -10,6 +10,7 @@ namespace RentNGoApp.Abstractions.Repositories
     {
         ICarRepository carRepository { get; }
         IUserRepository userRepository { get; }
+        IRentingInfoRepository rentingInfoRepository { get; }
         void Save();
     }
 }

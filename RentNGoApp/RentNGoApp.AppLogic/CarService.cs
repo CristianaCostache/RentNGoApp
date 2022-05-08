@@ -29,19 +29,24 @@ namespace RentNGoApp.AppLogic
 
         public void AddCar(Car car)
         {
-            /*
-            User user = new User();
-            user.firstname = "John";
-            user.lastname = "Doe";
-            user.email = "john.doe@ymail.com";
-            user.password = "12345678";
-            //
-            user.cars=new List<Car>();  
+            //User user = new User();
+            //user.firstname = "John";
+            //user.lastname = "Doe";
+            //user.email = "john.doe@ymail.com";
+            //user.password = "12345678";
+            ////
+            //user.cars=new List<Car>();  
+            //user.cars.Add(car);
+
+            //_repositoryWrapper.userRepository.Create(user);
+
+            //_repositoryWrapper.carRepository.Create(car);
+
+            User user = _repositoryWrapper.userRepository.FindByCondition(item => item.userId == 2).FirstOrDefault();
+            user.cars = new List<Car>();
             user.cars.Add(car);
 
-           /_repositoryWrapper.userRepository.Create(user);*/
-           
-            _repositoryWrapper.carRepository.Create(car);
+            _repositoryWrapper.userRepository.Update(user);
             _repositoryWrapper.Save();
         }
 
@@ -52,6 +57,19 @@ namespace RentNGoApp.AppLogic
 
 
             return cars;
+        }
+
+        public Car GetCarById(int id)
+        {
+            Car car = _repositoryWrapper.carRepository.FindByCondition(item => item.carId == id).FirstOrDefault();
+            return car;
+        }
+
+        public void Delete(int id)
+        {
+            Car car = GetCarById(id);
+            _repositoryWrapper.carRepository.Delete(car);
+            _repositoryWrapper.Save();
         }
     }
 }
