@@ -15,5 +15,6 @@ namespace RentNGoApp.Abstractions.Services
         List<Car> GetCarsByFilter(Filter filter);
         Car GetCarById(int id);
         void Delete(int id);
+        List<Car> GetCarsByUserId(int userId);
     }
 }

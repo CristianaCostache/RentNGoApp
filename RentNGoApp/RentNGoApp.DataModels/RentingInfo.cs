@@ -15,6 +15,7 @@ namespace RentNGoApp.DataModels
         public Car car { get; set; }
         public DateTime rentingDate { get; set; } = DateTime.Now;
         public string status { get; set; } = STATUS_ONGOING;
-
+        public int userId { get; set; }
+        public int carId { get; set; }
     }
 }

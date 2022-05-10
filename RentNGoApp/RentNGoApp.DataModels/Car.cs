@@ -10,7 +10,7 @@ namespace RentNGoApp.DataModels
 {
     public enum Brand
     {
-        [Display(Name = "Choose...")] None, Opel, Dacia, Audi, Tesla, BMW, Ford, Toyota, Volkswagen, MercedesBenz
+        [Display(Name = "Choose...")] None, Opel, Dacia, Audi, Tesla, BMW, Ford, Toyota, Volkswagen, MercedesBenz, Lada
     }
     public enum Color
     {
@@ -30,5 +30,6 @@ namespace RentNGoApp.DataModels
         public string status { get; set; } = STATUS_AVAILABLE;
         public DateTime createdAt { get; set; } = DateTime.Now;
         public DateTime updatedAt { get; set; } = DateTime.Now;
+        public int userId { get; set; }
     }
 }

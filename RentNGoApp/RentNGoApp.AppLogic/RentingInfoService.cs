@@ -20,6 +20,18 @@ namespace RentNGoApp.AppLogic
             _carService = carService;
         }
 
+        public List<RentingInfo> GetRentingInfosByUserId(int userId)
+        {
+            List<RentingInfo> rentingInfos = _repositoryWrapper.rentingInfoRepository.FindByCondition(rentingInfo => rentingInfo.userId == userId).ToList();
+            foreach (RentingInfo rentingInfo in rentingInfos)
+            {
+                Car car = _carService.GetCarById(rentingInfo.carId);
+                rentingInfo.car = car;
+                rentingInfo.user = _repositoryWrapper.userRepository.FindByCondition(user => user.userId == car.userId).FirstOrDefault();
+            }
+            return rentingInfos;
+        }
+
         public void Rent(int id)
         {
             Car car = _carService.GetCarById(id);

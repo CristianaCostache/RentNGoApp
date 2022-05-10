@@ -1,4 +1,6 @@
-﻿@{
+﻿@model RentNGoApp.DataModels.ProfileViewModel
+
+@{
 	ViewData["Title"] = "Profile";
 }
 <head>
@@ -11,8 +13,8 @@
 			<img src="~/img/img.png" class="infocard-img" id="profilePicture">
 		</div>
 		<div class="infocard-body col-md-8">
-			<h4>Full name</h4>
-			<p>Email: example@example.com</p>
+			<h4>@Html.DisplayFor(userFirstname => Model.user.firstname) @Html.DisplayFor(userLastname => Model.user.lastname)</h4>
+			<p>Email: @Html.DisplayFor(userEmail => Model.user.email)</p>
 		</div>
 		<button type="button" class="btn btn-primary btn-lg position-absolute bottom-10 end-10">Generate statistics</button>
 	</div>
@@ -27,19 +29,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td scope="row">name</td>
-				<td>brand</td>
-				<td>color</td>
-				<td>price</td>
-			</tr>
-			<tr>
-				<td scope="row">name</td>
-				<td>brand</td>
-				<td>color</td>
-				<td>price</td>
-			</tr>
-
+			@foreach (var car in Model.cars)
+			{
+				<tr>
+					<td scope="row">@Html.DisplayFor(name => car.name)</td>
+					<td>@Html.DisplayFor(brand => car.brand)</td>
+					<td>@Html.DisplayFor(color => car.color)</td>
+					<td>@Html.DisplayFor(price => car.price)</td>
+				</tr>
+			}
 		</tbody>
 	</table>
 	<hr>
@@ -55,21 +53,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td scope="row">name</td>
-				<td>brand</td>
-				<td>color</td>
-				<td>price</td>
-				<td>owner</td>
-			</tr>
-			<tr>
-				<td scope="row">name</td>
-				<td>brand</td>
-				<td>color</td>
-				<td>price</td>
-				<td>owner</td>
-			</tr>
-
+			@foreach (var rentingInfo in Model.rentingInfos)
+			{
+				<tr>
+					<td scope="row">@Html.DisplayFor(name => rentingInfo.car.name)</td>
+					<td>@Html.DisplayFor(brand => rentingInfo.car.brand)</td>
+					<td>@Html.DisplayFor(color => rentingInfo.car.color)</td>
+					<td>@Html.DisplayFor(price => rentingInfo.car.price)</td>
+					<td>@Html.DisplayFor(ownerFirstname => rentingInfo.user.firstname) @Html.DisplayFor(ownerLastname => rentingInfo.user.lastname)</td>
+				</tr>
+			}
 		</tbody>
 	</table>
 </div>
