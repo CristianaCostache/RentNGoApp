@@ -10,5 +10,6 @@ namespace RentNGoApp.Abstractions.Services
     public interface IUserService
     {
         void AddUser(User user);
+        ProfileViewModel GetUserData();
     }
 }

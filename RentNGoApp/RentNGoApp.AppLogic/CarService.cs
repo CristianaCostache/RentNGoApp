@@ -86,5 +86,11 @@ namespace RentNGoApp.AppLogic
             _repositoryWrapper.carRepository.Delete(car);
             _repositoryWrapper.Save();
         }
+
+        public List<Car> GetCarsByUserId(int userId)
+        {
+            List<Car> cars = _repositoryWrapper.carRepository.FindByCondition(car => car.userId == userId).ToList();
+            return cars;
+        }
     }
 }
