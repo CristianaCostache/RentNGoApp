@@ -20,9 +20,15 @@ namespace RentNGoApp.AppLogic
             _carService = carService;
         }
 
-        public List<RentingInfo> GetRentingInfosByUserId(int userId)
+        public RentingInfo GetOngoingRentingInfoByCarId(int id)
         {
-            List<RentingInfo> rentingInfos = _repositoryWrapper.rentingInfoRepository.FindByCondition(rentingInfo => rentingInfo.userId == userId).ToList();
+            RentingInfo rentingInfo = _repositoryWrapper.rentingInfoRepository.FindByCondition(rentingInfo => rentingInfo.carId == id && rentingInfo.status == RentingInfo.STATUS_ONGOING).FirstOrDefault();
+            return rentingInfo;
+        }
+
+        public List<RentingInfo> GetOngoingRentingInfosByUserId(int userId)
+        {
+            List<RentingInfo> rentingInfos = _repositoryWrapper.rentingInfoRepository.FindByCondition(rentingInfo => rentingInfo.userId == userId && rentingInfo.status == RentingInfo.STATUS_ONGOING).ToList();
             foreach (RentingInfo rentingInfo in rentingInfos)
             {
                 Car car = _carService.GetCarById(rentingInfo.carId);
@@ -45,7 +51,19 @@ namespace RentNGoApp.AppLogic
             _repositoryWrapper.userRepository.Update(user);
             _repositoryWrapper.carRepository.Update(car);
             _repositoryWrapper.rentingInfoRepository.Create(rentingInfo);
-            
+
+            _repositoryWrapper.Save();
+        }
+        public void UnrentCar(int id)
+        {
+            Car car = _carService.GetCarById(id);
+            car.status = Car.STATUS_AVAILABLE;
+
+            RentingInfo rentingInfo = GetOngoingRentingInfoByCarId(id);
+            rentingInfo.status = RentingInfo.STATUS_EXPIRED;
+
+            _repositoryWrapper.carRepository.Update(car);
+            _repositoryWrapper.rentingInfoRepository.Update(rentingInfo);
             _repositoryWrapper.Save();
         }
     }

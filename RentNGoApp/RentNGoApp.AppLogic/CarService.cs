@@ -21,11 +21,11 @@ namespace RentNGoApp.AppLogic
             _imageService = imageService;
         }
 
-        public List<Car> GetAllCars()
+        public List<Car> GetAllAvailableCars()
         {
             var cars = new List<Car>();
 
-            cars = _repositoryWrapper.carRepository.FindAll().ToList();
+            cars = _repositoryWrapper.carRepository.FindByCondition(car => car.status == Car.STATUS_AVAILABLE).ToList();
             foreach (Car car in cars)
             {
                 List<Image> images = _imageService.GetImagesByCarId(car.carId);
@@ -60,7 +60,7 @@ namespace RentNGoApp.AppLogic
             _repositoryWrapper.Save();
         }
 
-        public List<Car> GetCarsByFilter(Filter filter)
+        public List<Car> GetAvailableCarsByFilter(Filter filter)
         {
             List<Car> cars = _repositoryWrapper.carRepository.GetByFilter(filter);
             foreach (Car car in cars)

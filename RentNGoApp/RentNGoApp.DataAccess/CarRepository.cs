@@ -16,7 +16,7 @@ namespace RentNGoApp.DataAccess
 
         public List<Car> GetByFilter(Filter filter)
         {
-            var result = _rentNGoAppContext.cars.AsQueryable();
+            var result = _rentNGoAppContext.cars.AsQueryable().Where(car => car.status == Car.STATUS_AVAILABLE);
             if (filter.brand != 0)
             {
                 result = result.Where(item => item.brand == filter.brand);

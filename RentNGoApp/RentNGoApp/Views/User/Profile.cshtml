@@ -50,6 +50,7 @@
 				<th scope="col">Color</th>
 				<th scope="col">Price</th>
 				<th scope="col">Owner</th>
+				<th scope="col">*</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -61,6 +62,7 @@
 					<td>@Html.DisplayFor(color => rentingInfo.car.color)</td>
 					<td>@Html.DisplayFor(price => rentingInfo.car.price)</td>
 					<td>@Html.DisplayFor(ownerFirstname => rentingInfo.user.firstname) @Html.DisplayFor(ownerLastname => rentingInfo.user.lastname)</td>
+					<td><a asp-action="Unrent" asp-controller="Car" asp-route-id=@rentingInfo.carId class="btn btn-primary">Return</a></td>
 				</tr>
 			}
 		</tbody>
