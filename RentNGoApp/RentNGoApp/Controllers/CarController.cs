@@ -23,13 +23,13 @@ namespace RentNGoApp.Controllers
 
         public IActionResult Feed()
         {
-            var cars = _carService.GetAllCars();
+            var cars = _carService.GetAllAvailableCars();
             return View(cars);
         }
         [HttpPost]
         public IActionResult Feed([FromForm] Filter filter)
         {
-            var cars = _carService.GetCarsByFilter(filter);
+            var cars = _carService.GetAvailableCarsByFilter(filter);
             return View(cars);
         }
 
@@ -61,6 +61,12 @@ namespace RentNGoApp.Controllers
         {
             _rentingInfoService.Rent(id);
             return RedirectToAction("Feed");
+        }
+
+        public IActionResult Unrent(int id)
+        {
+            _rentingInfoService.UnrentCar(id);
+            return RedirectToAction("Profile", "User");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

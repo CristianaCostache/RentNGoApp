@@ -10,9 +10,9 @@ namespace RentNGoApp.Abstractions.Services
 {
     public interface ICarService
     {
-        List<Car> GetAllCars();
+        List<Car> GetAllAvailableCars();
         void AddCar(Car car, ICollection<IFormFile> imageFiles);
-        List<Car> GetCarsByFilter(Filter filter);
+        List<Car> GetAvailableCarsByFilter(Filter filter);
         Car GetCarById(int id);
         void Delete(int id);
         List<Car> GetCarsByUserId(int userId);
