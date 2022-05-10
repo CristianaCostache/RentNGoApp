@@ -11,21 +11,12 @@
 <div class="center-div">
 	<h4>@Html.DisplayFor(carItem => Model.name)</h4>
 	<div class="infocard d-flex justify-content-around">
-		<div class="infocard-container col-md-4">
-			<img src="~/img/img.png" class="infocard-img" alt="">
-		</div>
-		<div class="infocard-container col-md-4">
-			<img src="~/img/img.png" class="infocard-img" alt="">
-		</div>
-		<div class="infocard-container col-md-4">
-			<img src="~/img/img.png" class="infocard-img" alt="">
-		</div>
-		<div class="infocard-container col-md-4">
-			<img src="~/img/img.png" class="infocard-img" alt="">
-		</div>
-		<div class="infocard-container col-md-4">
-			<img src="~/img/img.png" class="infocard-img" alt="">
-		</div>
+		@foreach (var image in Model.images)
+		{
+			<div class="infocard-container col-md-4">
+				<img src="@Url.Content("~/img/car/" + image.name)" class="infocard-img" alt="">
+			</div>
+		}
 	</div>
 	<div class="d-flex justify-content-between align-items-center">
 		<h4>@Html.DisplayFor(carItem => Model.brand)</h4>

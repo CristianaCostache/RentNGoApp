@@ -55,7 +55,7 @@
 		{
 			<div class="infocard">
 				<div class="infocard-container col-md-4">
-					<img src="~/img/img.png" class="infocard-img" alt="">
+					<img src="@Url.Content("~/img/car/" + car.images.FirstOrDefault().name)" class="infocard-img" alt="">
 				</div>
 				<div class="infocard-body col-md">
 					<h4><a asp-controller="Car" asp-action="Details" asp-route-id=@car.carId>@Html.DisplayFor(carItem => car.name)</a></h4>
