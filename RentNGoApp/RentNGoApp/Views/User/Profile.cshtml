@@ -1,67 +1,73 @@
 ﻿@model RentNGoApp.DataModels.ProfileViewModel
 
 @{
-	ViewData["Title"] = "Profile";
+    ViewData["Title"] = "Profile";
 }
 <head>
-	<link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
 </head>
 
 <div class="center-div">
-	<div class="infocard">
-		<div class="infocard-container col-md">
-			<img src="~/img/img.png" class="infocard-img" id="profilePicture">
-		</div>
-		<div class="infocard-body col-md-8">
-			<p>Email: @Html.DisplayFor(userEmail => User.Identity.Name)</p>
-		</div>
-		<button type="button" class="btn btn-primary btn-lg position-absolute bottom-10 end-10">Generate statistics</button>
-	</div>
-	<h4>Posted cars</h4>
-	<table class="table table-hover table-striped">
-		<thead>
-			<tr>
-				<th scope="col">Name</th>
-				<th scope="col">Brand</th>
-				<th scope="col">Color</th>
-				<th scope="col">Price</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var car in Model.cars)
-			{
-				<tr>
-					<td scope="row">@Html.DisplayFor(name => car.name)</td>
-					<td>@Html.DisplayFor(brand => car.brand)</td>
-					<td>@Html.DisplayFor(color => car.color)</td>
-					<td>@Html.DisplayFor(price => car.price)</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-	<hr>
-	<h4>Rented cars</h4>
-	<table class="table table-hover table-striped">
-		<thead>
-			<tr>
-				<th scope="col">Name</th>
-				<th scope="col">Brand</th>
-				<th scope="col">Color</th>
-				<th scope="col">Price</th>
-				<th scope="col">*</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var rentingInfo in Model.rentingInfos)
-			{
-				<tr>
-					<td scope="row">@Html.DisplayFor(name => rentingInfo.car.name)</td>
-					<td>@Html.DisplayFor(brand => rentingInfo.car.brand)</td>
-					<td>@Html.DisplayFor(color => rentingInfo.car.color)</td>
-					<td>@Html.DisplayFor(price => rentingInfo.car.price)</td>
-					<td><a asp-action="Unrent" asp-controller="Car" asp-route-id=@rentingInfo.carId class="btn btn-primary">Return</a></td>
-				</tr>
-			}
-		</tbody>
-	</table>
+    <div class="infocard">
+        <div class="infocard-container col-md">
+            <img src="~/img/img.png" class="infocard-img" id="profilePicture">
+        </div>
+        <div class="infocard-body col-md-8">
+            <p>Email: @Html.DisplayFor(userEmail => User.Identity.Name)</p>
+        </div>
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Feed", "Car", new { area = "" })">
+            <button id="logout" type="submit" class="btn btn-danger btn-lg position-absolute top-10 end-10">Logout</button>
+        </form>
+        @if (User.IsInRole("Admin"))
+        {
+            <button type="button" class="btn btn-primary btn-lg position-absolute bottom-10 end-10">Generate statistics</button>
+        }
+    </div>
+    <h4>Posted cars</h4>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Color</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model.cars)
+            {
+                <tr>
+                    <td scope="row">@Html.DisplayFor(name => car.name)</td>
+                    <td>@Html.DisplayFor(brand => car.brand)</td>
+                    <td>@Html.DisplayFor(color => car.color)</td>
+                    <td>@Html.DisplayFor(price => car.price)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <hr>
+    <h4>Rented cars</h4>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Color</th>
+                <th scope="col">Price</th>
+                <th scope="col">*</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rentingInfo in Model.rentingInfos)
+            {
+                <tr>
+                    <td scope="row">@Html.DisplayFor(name => rentingInfo.car.name)</td>
+                    <td>@Html.DisplayFor(brand => rentingInfo.car.brand)</td>
+                    <td>@Html.DisplayFor(color => rentingInfo.car.color)</td>
+                    <td>@Html.DisplayFor(price => rentingInfo.car.price)</td>
+                    <td><a asp-action="Unrent" asp-controller="Car" asp-route-id=@rentingInfo.carId class="btn btn-primary">Return</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

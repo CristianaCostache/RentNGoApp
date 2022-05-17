@@ -37,7 +37,7 @@
 			{
 				<a asp-controller="Car" asp-action="Rent" asp-route-id=@Model.carId class="btn btn-primary col-md-2">Rent Now</a>
 			}
-			else
+			@if(User.FindFirst(ClaimTypes.NameIdentifier).Value == Model.userGuid || User.IsInRole("Admin"))
 			{
 				<a asp-controller="Car" asp-action="Delete" asp-route-id=@Model.carId class="btn btn-danger col-md-2">Delete</a>
 			}
