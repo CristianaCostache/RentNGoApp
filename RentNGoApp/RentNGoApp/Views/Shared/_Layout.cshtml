@@ -22,22 +22,36 @@
 			<div>
 				<ul class="navbar-nav">
 					<li>
-						<a class="dropdown-item" asp-controller="Car" asp-action="Post">Post an announcement</a>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<a class="dropdown-item" asp-controller="Car" asp-action="Post">Post an announcement</a>
+						}
+						else
+						{
+							<a class="dropdown-item text-black" href="/Login">Post an announcement</a>
+						}
 					</li>
 				</ul>
 			</div>
 			<div>
 				<ul class="navbar-nav">
 					<li>
-						<a class="dropdown-item" asp-controller="User" asp-action="Profile">Profile</a>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<a class="dropdown-item" asp-controller="User" asp-action="Profile">Profile</a>
+						}
+						else
+						{
+							<a class="dropdown-item text-black" href="/Login">Profile</a>
+						}
 					</li>
 				</ul>
 			</div>
 		</nav>
 	</header>
-			@RenderBody()
+	@RenderBody()
 
-	
+
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,4 +1,9 @@
-﻿@model RentNGoApp.DataModels.Car
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model RentNGoApp.DataModels.Car
 
 @{
 	ViewData["Title"] = "Details";
@@ -21,13 +26,25 @@
 	<div class="d-flex justify-content-between align-items-center">
 		<h4>@Html.DisplayFor(carItem => Model.brand)</h4>
 		<h4>@Html.DisplayFor(carItem => Model.color)</h4>
-		<h4>Car Owner</h4>
 		<h4 class="price">@Html.DisplayFor(carItem => Model.price)</h4>
 	</div>
 	<h4>Car description</h4>
 	<p class="border p-3">@Html.DisplayFor(carItem => Model.description)</p>
 	<div class="d-flex justify-content-around mt-3">
-		<a asp-controller="Car" asp-action="Rent" asp-route-id=@Model.carId class="btn btn-primary col-md-2">Rent Now</a>
-		<a asp-controller="Car" asp-action="Delete" asp-route-id=@Model.carId class="btn btn-danger col-md-2">Delete</a>
+		@if (User.Identity.IsAuthenticated)
+		{
+			@if (User.FindFirst(ClaimTypes.NameIdentifier).Value != Model.userGuid)
+			{
+				<a asp-controller="Car" asp-action="Rent" asp-route-id=@Model.carId class="btn btn-primary col-md-2">Rent Now</a>
+			}
+			else
+			{
+				<a asp-controller="Car" asp-action="Delete" asp-route-id=@Model.carId class="btn btn-danger col-md-2">Delete</a>
+			}
+		}
+		else
+		{
+			<a href="/Login" class="btn btn-primary col-md-2">Rent Now</a>
+		}
 	</div>
 </div>

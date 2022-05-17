@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RentNGoApp.DataModels;
 
 namespace RentNGoApp.DataAccess
 {
-    public class RentNGoAppContext : DbContext
+    public class RentNGoAppContext : IdentityDbContext<IdentityUser>
     {
         public RentNGoAppContext(DbContextOptions<RentNGoAppContext> options) : base(options) { }
 

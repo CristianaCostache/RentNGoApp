@@ -13,8 +13,7 @@
 			<img src="~/img/img.png" class="infocard-img" id="profilePicture">
 		</div>
 		<div class="infocard-body col-md-8">
-			<h4>@Html.DisplayFor(userFirstname => Model.user.firstname) @Html.DisplayFor(userLastname => Model.user.lastname)</h4>
-			<p>Email: @Html.DisplayFor(userEmail => Model.user.email)</p>
+			<p>Email: @Html.DisplayFor(userEmail => User.Identity.Name)</p>
 		</div>
 		<button type="button" class="btn btn-primary btn-lg position-absolute bottom-10 end-10">Generate statistics</button>
 	</div>
@@ -49,7 +48,6 @@
 				<th scope="col">Brand</th>
 				<th scope="col">Color</th>
 				<th scope="col">Price</th>
-				<th scope="col">Owner</th>
 				<th scope="col">*</th>
 			</tr>
 		</thead>
@@ -61,7 +59,6 @@
 					<td>@Html.DisplayFor(brand => rentingInfo.car.brand)</td>
 					<td>@Html.DisplayFor(color => rentingInfo.car.color)</td>
 					<td>@Html.DisplayFor(price => rentingInfo.car.price)</td>
-					<td>@Html.DisplayFor(ownerFirstname => rentingInfo.user.firstname) @Html.DisplayFor(ownerLastname => rentingInfo.user.lastname)</td>
 					<td><a asp-action="Unrent" asp-controller="Car" asp-route-id=@rentingInfo.carId class="btn btn-primary">Return</a></td>
 				</tr>
 			}

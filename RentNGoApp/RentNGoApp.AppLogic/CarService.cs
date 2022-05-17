@@ -37,26 +37,10 @@ namespace RentNGoApp.AppLogic
 
         public void AddCar(Car car, ICollection<IFormFile> imageFiles)
         {
-            //User user = new User();
-            //user.firstname = "John";
-            //user.lastname = "Doe";
-            //user.email = "john.doe@ymail.com";
-            //user.password = "12345678";
-            ////
-            //user.cars=new List<Car>();  
-            //user.cars.Add(car);
-
-            //_repositoryWrapper.userRepository.Create(user);
-
-            //_repositoryWrapper.carRepository.Create(car);
-
             ICollection<Image> images = _imageService.AddImage(imageFiles);
             car.images = images;
-            User user = _repositoryWrapper.userRepository.FindByCondition(item => item.userId == 2).FirstOrDefault();
-            user.cars = new List<Car>();
-            user.cars.Add(car);
 
-            _repositoryWrapper.userRepository.Update(user);
+            _repositoryWrapper.carRepository.Create(car);
             _repositoryWrapper.Save();
         }
 
@@ -87,9 +71,9 @@ namespace RentNGoApp.AppLogic
             _repositoryWrapper.Save();
         }
 
-        public List<Car> GetCarsByUserId(int userId)
+        public List<Car> GetCarsByUserId(string userGuid)
         {
-            List<Car> cars = _repositoryWrapper.carRepository.FindByCondition(car => car.userId == userId).ToList();
+            List<Car> cars = _repositoryWrapper.carRepository.FindByCondition(car => car.userGuid == userGuid).ToList();
             return cars;
         }
     }
