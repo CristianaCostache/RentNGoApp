@@ -1,4 +1,5 @@
-﻿using RentNGoApp.Abstractions.Repositories;
+﻿using Microsoft.AspNetCore.Identity;
+using RentNGoApp.Abstractions.Repositories;
 using RentNGoApp.DataModels;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,16 @@ namespace RentNGoApp.DataAccess
 {
     public class UserRepository : RepositoryBase<User>, IUserRepository
     {
-        public UserRepository(RentNGoAppContext rentNGoAppContext) : base(rentNGoAppContext)
-        {
-        }
+		private readonly RentNGoAppContext _rentNGoAppContext;
 
-    }
+		public UserRepository(RentNGoAppContext rentNGoAppContext) : base(rentNGoAppContext)
+        {
+			_rentNGoAppContext = rentNGoAppContext;
+		}
+
+		public List<IdentityUser> GetAllUsers()
+		{
+			return _rentNGoAppContext.Users.ToList();
+		}
+	}
 }

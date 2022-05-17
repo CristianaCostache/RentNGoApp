@@ -24,7 +24,13 @@ namespace RentNGoApp.AppLogic
             _carService = carService;
         }
 
-        public RentingInfo GetOngoingRentingInfoByCarId(int id)
+		public List<RentingInfo> GetAllRentingInfos()
+		{
+			List<RentingInfo> rentingInfos = _repositoryWrapper.rentingInfoRepository.FindAll().ToList();
+            return rentingInfos;
+		}
+
+		public RentingInfo GetOngoingRentingInfoByCarId(int id)
         {
             RentingInfo rentingInfo = _repositoryWrapper.rentingInfoRepository.FindByCondition(rentingInfo => rentingInfo.carId == id && rentingInfo.status == RentingInfo.STATUS_ONGOING).FirstOrDefault();
             return rentingInfo;

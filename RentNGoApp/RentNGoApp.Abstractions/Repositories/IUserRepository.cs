@@ -1,4 +1,5 @@
-﻿using RentNGoApp.DataModels;
+﻿using Microsoft.AspNetCore.Identity;
+using RentNGoApp.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace RentNGoApp.Abstractions.Repositories
 {
-    public interface IUserRepository : IRepositoryBase<User>
-    {
-    }
+	public interface IUserRepository : IRepositoryBase<User>
+	{
+		List<IdentityUser> GetAllUsers();
+	}
 }

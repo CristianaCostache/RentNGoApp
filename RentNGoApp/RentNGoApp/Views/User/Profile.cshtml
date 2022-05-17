@@ -20,7 +20,7 @@
         </form>
         @if (User.IsInRole("Admin"))
         {
-            <button type="button" class="btn btn-primary btn-lg position-absolute bottom-10 end-10">Generate statistics</button>
+            <a asp-action="GenerateStatistics" asp-controller="User" class="btn btn-primary btn-lg position-absolute bottom-10 end-10">Generate statistics</a>
         }
     </div>
     <h4>Posted cars</h4>

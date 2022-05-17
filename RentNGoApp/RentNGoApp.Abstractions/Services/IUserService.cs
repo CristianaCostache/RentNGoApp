@@ -13,5 +13,6 @@ namespace RentNGoApp.Abstractions.Services
     {
         void AddUser(User user);
         ProfileViewModel GetUserData(ClaimsPrincipal user);
-    }
+		string GenerateStatistics();
+	}
 }
