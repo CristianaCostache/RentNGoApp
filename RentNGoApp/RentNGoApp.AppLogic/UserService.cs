@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 using RentNGoApp.Abstractions.Repositories;
 using RentNGoApp.Abstractions.Services;
 using RentNGoApp.DataModels;
@@ -31,7 +32,23 @@ namespace RentNGoApp.AppLogic
             _repositoryWrapper.Save();
         }
 
-        public ProfileViewModel GetUserData(ClaimsPrincipal user)
+		public string GenerateStatistics()
+		{
+            List<IdentityUser> users = _repositoryWrapper.userRepository.GetAllUsers();
+            List<Car> cars = _carService.GetAllCars();
+            List<RentingInfo> rentingInfos = _rentingInfoService.GetAllRentingInfos();
+
+            Statistics statistics = new Statistics();
+            statistics.users = users;
+            statistics.cars = cars;
+            statistics.rentingInfos = rentingInfos;
+
+            string json = JsonConvert.SerializeObject(statistics, Formatting.Indented);
+
+            return json;
+		}
+
+		public ProfileViewModel GetUserData(ClaimsPrincipal user)
         {
             ProfileViewModel profileViewModel = new ProfileViewModel();
             

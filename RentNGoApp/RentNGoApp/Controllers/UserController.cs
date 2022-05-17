@@ -4,6 +4,7 @@ using RentNGoApp.Abstractions.Services;
 using RentNGoApp.DataModels;
 using RentNGoApp.Models;
 using System.Diagnostics;
+using System.Text;
 
 namespace RentNGoApp.Controllers
 {
@@ -25,6 +26,18 @@ namespace RentNGoApp.Controllers
             var user = HttpContext.User;
             ProfileViewModel profileViewModel = _userService.GetUserData(user);
             return View(profileViewModel);
+        }
+
+        public IActionResult GenerateStatistics()
+		{
+            var json = _userService.GenerateStatistics();
+			var fileName = "statistics_" + DateTime.Now + ".txt";
+			var mimeType = "text/plain";
+			var fileBytes = Encoding.ASCII.GetBytes(json);
+            return new FileContentResult(fileBytes, mimeType)
+            {
+                FileDownloadName = fileName
+            };
         }
 
         public IActionResult Register()
