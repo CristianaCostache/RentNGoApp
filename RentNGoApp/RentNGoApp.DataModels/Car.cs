@@ -30,6 +30,7 @@ namespace RentNGoApp.DataModels
         public string status { get; set; } = STATUS_AVAILABLE;
         public DateTime createdAt { get; set; } = DateTime.Now;
         public DateTime updatedAt { get; set; } = DateTime.Now;
-        public int userId { get; set; }
+/*        public int userId { get; set; }*/
+        public string userGuid { get; set; }
     }
 }

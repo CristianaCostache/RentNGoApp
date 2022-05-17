@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using RentNGoApp.Abstractions.Services;
 using RentNGoApp.DataModels;
 using RentNGoApp.Models;
@@ -9,13 +10,15 @@ namespace RentNGoApp.Controllers
     public class CarController : Controller
     {
         private readonly ILogger<CarController> _logger;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ICarService _carService;
         private readonly IImageService _imageService;
         private readonly IRentingInfoService _rentingInfoService;
 
-        public CarController(ILogger<CarController> logger, ICarService carService, IImageService imageService, IRentingInfoService rentingInfoService)
+        public CarController(ILogger<CarController> logger, UserManager<IdentityUser> userManager, ICarService carService, IImageService imageService, IRentingInfoService rentingInfoService)
         {
             _logger = logger;
+            _userManager = userManager;
             _carService = carService;
             _imageService = imageService;
             _rentingInfoService = rentingInfoService;
@@ -41,6 +44,8 @@ namespace RentNGoApp.Controllers
         [HttpPost]
         public IActionResult Post([FromForm] Car car, ICollection<IFormFile> imageFiles)
         {
+            string userGuid = _userManager.GetUserId(HttpContext.User);
+            car.userGuid = userGuid;
             _carService.AddCar(car, imageFiles);
             return RedirectToAction("Feed");
         }
@@ -59,7 +64,8 @@ namespace RentNGoApp.Controllers
 
         public IActionResult Rent(int id)
         {
-            _rentingInfoService.Rent(id);
+            var user = HttpContext.User;
+            _rentingInfoService.Rent(id, user);
             return RedirectToAction("Feed");
         }
 
