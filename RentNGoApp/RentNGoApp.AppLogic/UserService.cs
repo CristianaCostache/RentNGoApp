@@ -39,7 +39,7 @@ namespace RentNGoApp.AppLogic
             List<Car> cars = _carService.GetCarsByUserId(userGuid);
             profileViewModel.cars = cars;
 
-            List<RentingInfo> rentingInfos = _rentingInfoService.GetOngoingRentingInfosByUser(user);
+            List<RentingInfo> rentingInfos = _rentingInfoService.GetOngoingRentingInfosByUser(userGuid);
             profileViewModel.rentingInfos = rentingInfos;
 
             return profileViewModel;

@@ -25,20 +25,23 @@ namespace RentNGoApp.AppLogic
         public ICollection<Image> AddImage(ICollection<IFormFile> imageFiles)
         {
             List<Image> images = new List<Image>();
-            string wwwRootPath = _webHostEnvironment.WebRootPath;
-            foreach (IFormFile imageFile in imageFiles)
+            if (imageFiles.Count != 0)
             {
-                Image image = new Image();
-                string fileName = Path.GetFileNameWithoutExtension(imageFile.FileName);
-                string extension = Path.GetExtension(imageFile.FileName);
-                image.name = fileName = fileName + DateTime.Now.ToString("_yyMMddHHmmss") + extension;
-                string path = Path.Combine(wwwRootPath + "/img/car/", fileName);
-                using (var fileStream = new FileStream(path, FileMode.Create))
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                foreach (IFormFile imageFile in imageFiles)
                 {
-                    imageFile.CopyTo(fileStream);
+                    Image image = new Image();
+                    string fileName = Path.GetFileNameWithoutExtension(imageFile.FileName);
+                    string extension = Path.GetExtension(imageFile.FileName);
+                    image.name = fileName = fileName + DateTime.Now.ToString("_yyMMddHHmmss") + extension;
+                    string path = Path.Combine(wwwRootPath + "/img/car/", fileName);
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        imageFile.CopyTo(fileStream);
+                    }
+                    _repositoryWrapper.imageRepository.Create(image);
+                    images.Add(image);
                 }
-                _repositoryWrapper.imageRepository.Create(image);
-                images.Add(image);
             }
             return images;
         }

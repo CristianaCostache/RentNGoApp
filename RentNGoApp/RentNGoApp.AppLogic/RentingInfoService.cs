@@ -30,9 +30,8 @@ namespace RentNGoApp.AppLogic
             return rentingInfo;
         }
 
-        public List<RentingInfo> GetOngoingRentingInfosByUser(ClaimsPrincipal user)
+        public List<RentingInfo> GetOngoingRentingInfosByUser(string userGuid)
         {
-            string userGuid = _userManager.GetUserId(user);
             List<RentingInfo> rentingInfos = _repositoryWrapper.rentingInfoRepository.FindByCondition(rentingInfo => rentingInfo.userGuid == userGuid && rentingInfo.status == RentingInfo.STATUS_ONGOING).ToList();
             foreach (RentingInfo rentingInfo in rentingInfos)
             {
@@ -43,9 +42,8 @@ namespace RentNGoApp.AppLogic
             return rentingInfos;
         }
 
-        public void Rent(int id, ClaimsPrincipal user)
+        public void Rent(int id, string userGuid)
         {
-            string userGuid = _userManager.GetUserId(user);
             Car car = _carService.GetCarById(id);
             RentingInfo rentingInfo = new RentingInfo();
             rentingInfo.car = car;

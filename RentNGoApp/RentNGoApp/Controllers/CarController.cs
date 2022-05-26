@@ -65,7 +65,8 @@ namespace RentNGoApp.Controllers
         public IActionResult Rent(int id)
         {
             var user = HttpContext.User;
-            _rentingInfoService.Rent(id, user);
+            string userGuid = _userManager.GetUserId(user);
+            _rentingInfoService.Rent(id, userGuid);
             return RedirectToAction("Feed");
         }
 
