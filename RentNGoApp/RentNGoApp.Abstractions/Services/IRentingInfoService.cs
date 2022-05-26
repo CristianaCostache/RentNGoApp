@@ -15,5 +15,5 @@ namespace RentNGoApp.Abstractions.Services
         RentingInfo GetOngoingRentingInfoByCarId(int id);
         void UnrentCar(int id);
         List<RentingInfo> GetOngoingRentingInfosByUser(string userGuid);
-    }
+	}
 }
