@@ -11,10 +11,9 @@ namespace RentNGoApp.Abstractions.Services
 {
     public interface IRentingInfoService
     {
-        void Rent(int id, ClaimsPrincipal user);
+        void Rent(int id, string userGuid);
         RentingInfo GetOngoingRentingInfoByCarId(int id);
         void UnrentCar(int id);
-        List<RentingInfo> GetOngoingRentingInfosByUser(ClaimsPrincipal user);
-        List<RentingInfo> GetAllRentingInfos();
+        List<RentingInfo> GetOngoingRentingInfosByUser(string userGuid);
 	}
 }

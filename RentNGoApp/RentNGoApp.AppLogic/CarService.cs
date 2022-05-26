@@ -77,10 +77,16 @@ namespace RentNGoApp.AppLogic
             return cars;
         }
 
-		public List<Car> GetAllCars()
-		{
-			List<Car> cars = _repositoryWrapper.carRepository.FindAll().ToList();
+        public List<Car> GetAllCars()
+        {
+            List<Car> cars = _repositoryWrapper.carRepository.FindAll().ToList();
             return cars;
-		}
-	}
+        }
+
+        public List<Car> GetAllUnavailableCars()
+        {
+            List<Car> cars = _repositoryWrapper.carRepository.FindByCondition(car => car.status == Car.STATUS_UNAVAILABLE).ToList();
+            return cars;
+        }
+    }
 }
