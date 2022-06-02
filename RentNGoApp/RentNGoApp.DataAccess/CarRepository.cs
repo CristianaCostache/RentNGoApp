@@ -14,6 +14,16 @@ namespace RentNGoApp.DataAccess
         {
         }
 
+        public List<Car> GetAllAvailableCars()
+        {
+            return _rentNGoAppContext.cars.Where(car => car.status == Car.STATUS_AVAILABLE).ToList();
+        }
+
+        public List<Car> GetAllCars()
+        {
+            return _rentNGoAppContext.cars.ToList();
+        }
+
         public List<Car> GetByFilter(Filter filter)
         {
             var result = _rentNGoAppContext.cars.AsQueryable().Where(car => car.status == Car.STATUS_AVAILABLE);
@@ -45,6 +55,11 @@ namespace RentNGoApp.DataAccess
                 }
             }
             return result.ToList();
+        }
+
+        public Car GetCarById(int id)
+        {
+            return _rentNGoAppContext.cars.Where(car => car.carId == id).FirstOrDefault();
         }
     }
 }

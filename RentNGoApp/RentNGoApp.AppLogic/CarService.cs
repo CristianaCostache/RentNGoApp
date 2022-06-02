@@ -25,7 +25,8 @@ namespace RentNGoApp.AppLogic
         {
             var cars = new List<Car>();
 
-            cars = _repositoryWrapper.carRepository.FindByCondition(car => car.status == Car.STATUS_AVAILABLE).ToList();
+            //cars = _repositoryWrapper.carRepository.FindByCondition(car => car.status == Car.STATUS_AVAILABLE).ToList();
+            cars = _repositoryWrapper.carRepository.GetAllAvailableCars();
             foreach (Car car in cars)
             {
                 List<Image> images = _imageService.GetImagesByCarId(car.carId);
@@ -58,9 +59,10 @@ namespace RentNGoApp.AppLogic
 
         public Car GetCarById(int id)
         {
-            Car car = _repositoryWrapper.carRepository.FindByCondition(item => item.carId == id).FirstOrDefault();
-            List<Image> images = _imageService.GetImagesByCarId(car.carId);
-            car.images = images;
+            Car car=_repositoryWrapper.carRepository.GetCarById(id);
+            //Car car = _repositoryWrapper.carRepository.FindByCondition(item => item.carId == id).FirstOrDefault();
+            // List<Image> images = _imageService.GetImagesByCarId(car.carId);
+            //car.images = images;
             return car;
         }
 
@@ -79,7 +81,8 @@ namespace RentNGoApp.AppLogic
 
         public List<Car> GetAllCars()
         {
-            List<Car> cars = _repositoryWrapper.carRepository.FindAll().ToList();
+            //List<Car> cars = _repositoryWrapper.carRepository.FindAll().ToList();
+            List<Car> cars = _repositoryWrapper.carRepository.GetAllCars();
             return cars;
         }
 

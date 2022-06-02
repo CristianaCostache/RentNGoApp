@@ -10,5 +10,8 @@ namespace RentNGoApp.Abstractions.Repositories
     public interface ICarRepository : IRepositoryBase<Car>
     {
         List<Car> GetByFilter(Filter filter);
+        List<Car> GetAllCars();
+        List<Car> GetAllAvailableCars();
+        Car GetCarById(int id);
     }
 }
